@@ -54,7 +54,6 @@
     "main": "./dist/index.js",
     "jsnext:main": "./es/index.js",
     "dependencies": {
-        "@r-squared/rsquared-js-ws": "https://github.com/technoshantoms/acloudbank-js-ws.git",
         "aws-sdk": "^2.810.0",
         "bigi": "^1.4.2",
         "bs58": "^4.0.1",
