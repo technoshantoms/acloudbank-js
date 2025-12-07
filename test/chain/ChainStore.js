@@ -1,15 +1,15 @@
-import assert from "assert";
-import {Apis, ChainConfig} from "@r-squared/rsquared-js-ws";
+import assert, { doesNotMatch } from "assert";
+import {Apis, ChainConfig} from "bitsharesjs-ws";
 import {ChainStore} from "../../lib";
 // var objs = require("./testObjects.json");
 
 var coreAsset;
 
-xdescribe("ChainStore", () => {
+describe("ChainStore", () => {
     // Connect once for all tests
     before(function() {
         return Apis.instance(
-            "wss://node.rsquared.digital",
+            "wss://eu.nodes.bitshares.ws",
             true
         ).init_promise.then(function(result) {
             coreAsset = result[0].network.core_asset;
@@ -192,7 +192,7 @@ xdescribe("ChainStore", () => {
 //     before(function() {
 //         return new Promise(function(resolve) {
 //             return Apis.instance(
-//                 "wss://node.rsquared.digital",
+//                 "wss://eu.nodes.bitshares.ws",
 //                 true
 //             ).init_promise.then(function(result) {
 //                 coreAsset = result[0].network.core_asset;

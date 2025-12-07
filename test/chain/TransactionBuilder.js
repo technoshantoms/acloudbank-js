@@ -1,12 +1,12 @@
 import assert from "assert";
-import {Apis} from "@r-squared/rsquared-js-ws";
+import {Apis} from "bitsharesjs-ws";
 import {TransactionBuilder, ops, hash} from "../../lib";
 
-xdescribe("TransactionBuilder", () => {
+describe("TransactionBuilder", () => {
     // Connect once for all tests
     before(function() {
         return new Promise(function(resolve, reject) {
-            Apis.instance("wss://node.rsquared.digital", true)
+            Apis.instance("wss://eu.nodes.bitshares.ws", true)
                 .init_promise.then(resolve)
                 .catch(reject);
         });
@@ -57,7 +57,7 @@ xdescribe("TransactionBuilder", () => {
         assert.equal(tr.operations[0][1], tx.operations[0][1]);
     });
 
-    xit("Transfer", () => {
+    it("Transfer", () => {
         let tr = new TransactionBuilder();
 
         assert.doesNotThrow(function() {
@@ -70,8 +70,8 @@ xdescribe("TransactionBuilder", () => {
                 to: "1.2.2",
                 amount: {amount: 50000, asset_id: "1.3.0"},
                 memo: {
-                    from: "REV1111111111111111111111111111111114T1Anm",
-                    to: "REV1111111111111111111111111111111114T1Anm",
+                    from: "BTS1111111111111111111111111111111114T1Anm",
+                    to: "BTS1111111111111111111111111111111114T1Anm",
                     nonce: 0,
                     message: ""
                 }
@@ -79,7 +79,7 @@ xdescribe("TransactionBuilder", () => {
         }, "This transfer should not throw");
     });
 
-    xit("Sets core required fees", () => {
+    it("Sets core required fees", () => {
         return new Promise((resolve, reject) => {
             let tr = new TransactionBuilder();
             tr.add_type_operation("transfer", {
@@ -91,8 +91,8 @@ xdescribe("TransactionBuilder", () => {
                 to: "1.2.2",
                 amount: {amount: 50000, asset_id: "1.3.0"},
                 memo: {
-                    from: "REV1111111111111111111111111111111114T1Anm",
-                    to: "REV1111111111111111111111111111111114T1Anm",
+                    from: "BTS1111111111111111111111111111111114T1Anm",
+                    to: "BTS1111111111111111111111111111111114T1Anm",
                     nonce: 0,
                     message: ""
                 }
@@ -109,7 +109,7 @@ xdescribe("TransactionBuilder", () => {
         });
     });
 
-    xit("Sets required fees", () => {
+    it("Sets required fees", () => {
         return new Promise((resolve, reject) => {
             let tr = new TransactionBuilder();
             tr.add_type_operation("transfer", {
@@ -121,8 +121,8 @@ xdescribe("TransactionBuilder", () => {
                 to: "1.2.2",
                 amount: {amount: 50000, asset_id: "1.3.0"},
                 memo: {
-                    from: "REV1111111111111111111111111111111114T1Anm",
-                    to: "REV1111111111111111111111111111111114T1Anm",
+                    from: "BTS1111111111111111111111111111111114T1Anm",
+                    to: "BTS1111111111111111111111111111111114T1Anm",
                     nonce: 0,
                     message: ""
                 }
@@ -139,7 +139,7 @@ xdescribe("TransactionBuilder", () => {
         });
     });
 
-    xit("Defaults to CORE when fee pool is empty", () => {
+    it("Defaults to CORE when fee pool is empty", () => {
         return new Promise((resolve, reject) => {
             let tr = new TransactionBuilder();
             tr.add_type_operation("transfer", {
@@ -151,8 +151,8 @@ xdescribe("TransactionBuilder", () => {
                 to: "1.2.2",
                 amount: {amount: 50000, asset_id: "1.3.0"},
                 memo: {
-                    from: "REV1111111111111111111111111111111114T1Anm",
-                    to: "REV1111111111111111111111111111111114T1Anm",
+                    from: "BTS1111111111111111111111111111111114T1Anm",
+                    to: "BTS1111111111111111111111111111111114T1Anm",
                     nonce: 0,
                     message: ""
                 }
@@ -169,7 +169,7 @@ xdescribe("TransactionBuilder", () => {
         });
     });
 
-    xit("Sets and checks required fees for each op", () => {
+    it("Sets and checks required fees for each op", () => {
         return new Promise((resolve, reject) => {
             let tr = new TransactionBuilder();
             tr.add_type_operation("transfer", {
@@ -181,8 +181,8 @@ xdescribe("TransactionBuilder", () => {
                 to: "1.2.2",
                 amount: {amount: 50000, asset_id: "1.3.0"},
                 memo: {
-                    from: "REV1111111111111111111111111111111114T1Anm",
-                    to: "REV1111111111111111111111111111111114T1Anm",
+                    from: "BTS1111111111111111111111111111111114T1Anm",
+                    to: "BTS1111111111111111111111111111111114T1Anm",
                     nonce: 0,
                     message: ""
                 }
@@ -197,8 +197,8 @@ xdescribe("TransactionBuilder", () => {
                 to: "1.2.2",
                 amount: {amount: 50000, asset_id: "1.3.0"},
                 memo: {
-                    from: "REV1111111111111111111111111111111114T1Anm",
-                    to: "REV1111111111111111111111111111111114T1Anm",
+                    from: "BTS1111111111111111111111111111111114T1Anm",
+                    to: "BTS1111111111111111111111111111111114T1Anm",
                     nonce: 0,
                     message: ""
                 }
@@ -213,8 +213,8 @@ xdescribe("TransactionBuilder", () => {
                 to: "1.2.2",
                 amount: {amount: 50000, asset_id: "1.3.0"},
                 memo: {
-                    from: "REV1111111111111111111111111111111114T1Anm",
-                    to: "REV1111111111111111111111111111111114T1Anm",
+                    from: "BTS1111111111111111111111111111111114T1Anm",
+                    to: "BTS1111111111111111111111111111111114T1Anm",
                     nonce: 0,
                     message: ""
                 }
@@ -229,8 +229,8 @@ xdescribe("TransactionBuilder", () => {
                 to: "1.2.2",
                 amount: {amount: 50000, asset_id: "1.3.0"},
                 memo: {
-                    from: "REV1111111111111111111111111111111114T1Anm",
-                    to: "REV1111111111111111111111111111111114T1Anm",
+                    from: "BTS1111111111111111111111111111111114T1Anm",
+                    to: "BTS1111111111111111111111111111111114T1Anm",
                     nonce: 0,
                     message: ""
                 }
@@ -264,7 +264,7 @@ xdescribe("TransactionBuilder", () => {
         });
     });
 
-    xit("Sets non-zero fee for proposed operations", () => {
+    it("Sets non-zero fee for proposed operations", () => {
         return new Promise((resolve, reject) => {
             let tr = new TransactionBuilder();
 
@@ -278,8 +278,8 @@ xdescribe("TransactionBuilder", () => {
                     to: "1.2.802379",
                     amount: {amount: 100000, asset_id: "1.3.0"},
                     memo: {
-                        from: "REV1111111111111111111111111111111114T1Anm",
-                        to: "REV1111111111111111111111111111111114T1Anm",
+                        from: "BTS1111111111111111111111111111111114T1Anm",
+                        to: "BTS1111111111111111111111111111111114T1Anm",
                         nonce: 0,
                         message: ""
                     }
@@ -313,7 +313,7 @@ xdescribe("TransactionBuilder", () => {
         });
     });
 
-    xit("Resolves fees for multiple proposed operations", () => {
+    it("Resolves fees for multiple proposed operations", () => {
         return new Promise((resolve, reject) => {
             let tr = new TransactionBuilder();
 
@@ -330,8 +330,8 @@ xdescribe("TransactionBuilder", () => {
                         to: "1.2.2",
                         amount: {amount: 50000, asset_id: "1.3.0"},
                         memo: {
-                            from: "REV1111111111111111111111111111111114T1Anm",
-                            to: "REV1111111111111111111111111111111114T1Anm",
+                            from: "BTS1111111111111111111111111111111114T1Anm",
+                            to: "BTS1111111111111111111111111111111114T1Anm",
                             nonce: 0,
                             message: ""
                         }
@@ -391,8 +391,8 @@ xdescribe("TransactionBuilder", () => {
     //                 to: "1.2.2",
     //                 amount: {amount: 50000, asset_id: "1.3.0"},
     //                 memo: {
-    //                     from: "REV1111111111111111111111111111111114T1Anm",
-    //                     to: "REV1111111111111111111111111111111114T1Anm",
+    //                     from: "BTS1111111111111111111111111111111114T1Anm",
+    //                     to: "BTS1111111111111111111111111111111114T1Anm",
     //                     nonce: 0,
     //                     message: ""
     //                 }
@@ -467,6 +467,72 @@ xdescribe("TransactionBuilder", () => {
 
         assert.doesNotThrow(function() {
             tr.add_type_operation("asset_create", operationJSON);
+        });
+    });
+
+    it("Htlc create", () => {
+        let tr = new TransactionBuilder();
+
+        let preimageValue = "My preimage value";
+        let preimage_hash_calculated = hash.sha256(preimageValue);
+
+        let operationJSON = {
+            from: "1.2.680",
+            to: "1.2.17",
+            fee: {
+                amount: 0,
+                asset_id: "1.3.0"
+            },
+            amount: {
+                amount: 1,
+                asset_id: "1.3.0"
+            },
+            preimage_hash: [1, preimage_hash_calculated],
+            preimage_size: preimageValue.length,
+            claim_period_seconds: 86400
+        };
+
+        assert.doesNotThrow(function() {
+            tr.add_type_operation("htlc_create", operationJSON);
+        });
+    });
+
+    it("Htlc redeem", () => {
+        let tr = new TransactionBuilder();
+        let preimageValue = "My preimage value";
+
+        let operationJSON = {
+            fee: {
+                amount: 0,
+                asset_id: "1.3.0"
+            },
+            htlc_id: "1.16.1",
+            redeemer: "1.2.283",
+            preimage: preimageValue,
+            extensions: null
+        };
+
+        assert.doesNotThrow(function() {
+            tr.add_type_operation("htlc_redeem", operationJSON);
+        });
+    });
+
+    it("Htlc extend", () => {
+        let tr = new TransactionBuilder();
+
+        let operationJSON = {
+            fee: {
+                amount: 0,
+                asset_id: "1.3.0"
+            },
+            htlc_id: "1.16.1",
+            update_issuer: "1.2.283",
+            seconds_to_add: 60,
+            extensions: null
+        };
+
+        assert.doesNotThrow(function() {
+            tr.add_type_operation("htlc_extend", operationJSON);
         });
     });
 

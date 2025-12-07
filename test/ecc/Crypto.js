@@ -1,7 +1,7 @@
 import {Aes, PrivateKey, PublicKey, Signature, hash, key} from "../../lib";
 import assert from "assert";
 import {Long} from "bytebuffer";
-import {ChainConfig} from "@r-squared/rsquared-js-ws";
+import {ChainConfig} from "bitsharesjs-ws";
 
 import secureRandom from "secure-random";
 
@@ -261,7 +261,7 @@ var min_time_elapsed = function(f) {
     var elapsed = Date.now() - start_t;
     assert.equal(
         // repeat operations may take less time
-        elapsed >= 200 * 0.8,
+        elapsed >= 250 * 0.8,
         true,
         `minimum time requirement was not met, instead only ${elapsed /
             1000.0} elapsed`
