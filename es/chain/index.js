@@ -8,5 +8,5 @@ import ChainValidation from "./src/ChainValidation";
 import EmitterInstance from "./src/EmitterInstance";
 import Login from "./src/AccountLogin";
 var FetchChainObjects = ChainStore.FetchChainObjects,
-  FetchChain = ChainStore.FetchChain;
+    FetchChain = ChainStore.FetchChain;
 export { ChainStore, TransactionBuilder, FetchChainObjects, ChainTypes, ObjectId, NumberUtils, TransactionHelper, ChainValidation, FetchChain, Login };

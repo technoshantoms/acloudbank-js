@@ -1,14 +1,19 @@
 import PublicKey from "../../ecc/src/PublicKey";
+
 var Buffer = require("safe-buffer").Buffer;
+
 var FastParser = /*#__PURE__*/function () {
   function FastParser() {}
+
   FastParser.fixed_data = function fixed_data(b, len, buffer) {
     if (!b) {
       return;
     }
+
     if (buffer) {
       var data = buffer.slice(0, len).toString("binary");
       b.append(data, "binary");
+
       while (len-- > data.length) {
         b.writeUint8(0);
       }
@@ -18,12 +23,15 @@ var FastParser = /*#__PURE__*/function () {
       return Buffer.from(b_copy.toBinary(), "binary");
     }
   };
+
   FastParser.public_key = function public_key(b, _public_key) {
     if (!b) {
       return;
     }
+
     if (_public_key) {
       var buffer = _public_key.toBuffer();
+
       b.append(buffer.toString("binary"), "binary");
       return;
     } else {
@@ -31,10 +39,12 @@ var FastParser = /*#__PURE__*/function () {
       return PublicKey.fromBuffer(buffer);
     }
   };
+
   FastParser.ripemd160 = function ripemd160(b, _ripemd) {
     if (!b) {
       return;
     }
+
     if (_ripemd) {
       FastParser.fixed_data(b, 20, _ripemd);
       return;
@@ -42,6 +52,7 @@ var FastParser = /*#__PURE__*/function () {
       return FastParser.fixed_data(b, 20);
     }
   };
+
   FastParser.time_point_sec = function time_point_sec(b, epoch) {
     if (epoch) {
       epoch = Math.ceil(epoch / 1000);
@@ -49,9 +60,12 @@ var FastParser = /*#__PURE__*/function () {
       return;
     } else {
       epoch = b.readInt32(); // fc::time_point_sec
+
       return new Date(epoch * 1000);
     }
   };
+
   return FastParser;
 }();
+
 export default FastParser;

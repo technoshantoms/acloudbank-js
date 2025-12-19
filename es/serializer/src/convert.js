@@ -1,5 +1,7 @@
 import ByteBuffer from "bytebuffer";
+
 var Buffer = require("safe-buffer").Buffer;
+
 export default function (type) {
   return {
     fromHex: function fromHex(hex) {
@@ -26,6 +28,7 @@ export default function (type) {
     }
   };
 }
+
 var toByteBuffer = function toByteBuffer(type, object) {
   var b = new ByteBuffer(ByteBuffer.DEFAULT_CAPACITY, ByteBuffer.LITTLE_ENDIAN);
   type.appendByteBuffer(b, object);

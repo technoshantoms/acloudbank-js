@@ -1,30 +1,29 @@
 import types from "./types";
 import SerializerImpl from "./serializer";
 var varint32 = types.varint32,
-  varuint64 = types.varuint64,
-  uint8 = types.uint8,
-  uint16 = types.uint16,
-  uint32 = types.uint32,
-  int64 = types.int64,
-  uint64 = types.uint64,
-  string = types.string,
-  bytes = types.bytes,
-  bool = types.bool,
-  array = types.array,
-  protocol_id_type = types.protocol_id_type,
-  object_id_type = types.object_id_type,
-  vote_id = types.vote_id,
-  future_extensions = types.future_extensions,
-  static_variant = types.static_variant,
-  map = types.map,
-  set = types.set,
-  public_key = types.public_key,
-  address = types.address,
-  time_point_sec = types.time_point_sec,
-  optional = types.optional,
-  extension = types.extension;
+    varuint64 = types.varuint64,
+    uint8 = types.uint8,
+    uint16 = types.uint16,
+    uint32 = types.uint32,
+    int64 = types.int64,
+    uint64 = types.uint64,
+    string = types.string,
+    bytes = types.bytes,
+    bool = types.bool,
+    array = types.array,
+    protocol_id_type = types.protocol_id_type,
+    object_id_type = types.object_id_type,
+    vote_id = types.vote_id,
+    future_extensions = types.future_extensions,
+    static_variant = types.static_variant,
+    map = types.map,
+    set = types.set,
+    public_key = types.public_key,
+    address = types.address,
+    time_point_sec = types.time_point_sec,
+    optional = types.optional,
+    extension = types.extension;
 future_extensions = types["void"];
-
 /*
 When updating generated code
 Replace:  operation = static_variant [
@@ -38,25 +37,33 @@ public_key = new Serializer(
 // Place-holder, their are dependencies on "operation" .. The final list of
 // operations is not avialble until the very end of the generated code.
 // See: operation.st_operations = ...
-var operation = static_variant();
-// module.exports["operation"] = operation;
 
-export { operation };
-// For module.exports
+var operation = static_variant(); // module.exports["operation"] = operation;
+
+export { operation }; // For module.exports
+
 var Serializer = function Serializer(operation_name, serilization_types_object) {
-  return new SerializerImpl(operation_name, serilization_types_object);
-  // return module.exports[operation_name] = s;
-};
-
-// Custom-types follow Generated code:
-
+  return new SerializerImpl(operation_name, serilization_types_object); // return module.exports[operation_name] = s;
+}; // Custom-types follow Generated code:
 // ##  Generated code follows
 // # programs/js_operation_serializer > npm i -g decaffeinate
 // ## -------------------------------
+
+
 export var transfer_operation_fee_parameters = new Serializer("transfer_operation_fee_parameters", {
   fee: uint64,
   price_per_kbyte: uint32
 });
+export var limit_order_create_operation_fee_parameters = new Serializer("limit_order_create_operation_fee_parameters", {
+  fee: uint64
+});
+export var limit_order_cancel_operation_fee_parameters = new Serializer("limit_order_cancel_operation_fee_parameters", {
+  fee: uint64
+});
+export var call_order_update_operation_fee_parameters = new Serializer("call_order_update_operation_fee_parameters", {
+  fee: uint64
+});
+export var fill_order_operation_fee_parameters = new Serializer("fill_order_operation_fee_parameters");
 export var account_create_operation_fee_parameters = new Serializer("account_create_operation_fee_parameters", {
   basic_fee: uint64,
   premium_fee: uint64,
@@ -156,6 +163,9 @@ export var vesting_balance_create_operation_fee_parameters = new Serializer("ves
 export var vesting_balance_withdraw_operation_fee_parameters = new Serializer("vesting_balance_withdraw_operation_fee_parameters", {
   fee: uint64
 });
+export var worker_create_operation_fee_parameters = new Serializer("worker_create_operation_fee_parameters", {
+  fee: uint64
+});
 export var custom_operation_fee_parameters = new Serializer("custom_operation_fee_parameters", {
   fee: uint64,
   price_per_kbyte: uint32
@@ -184,12 +194,30 @@ export var asset_claim_fees_operation_fee_parameters = new Serializer("asset_cla
   fee: uint64
 });
 export var fba_distribute_operation_fee_parameters = new Serializer("fba_distribute_operation_fee_parameters");
+export var bid_collateral_operation_fee_parameters = new Serializer("bid_collateral_operation_fee_parameters", {
+  fee: uint64
+});
+export var execute_bid_operation_fee_parameters = new Serializer("execute_bid_operation_fee_parameters");
 export var asset_claim_pool_operation_fee_parameters = new Serializer("asset_claim_pool_operation_fee_parameters", {
   fee: uint64
 });
 export var asset_update_issuer_operation_fee_parameters = new Serializer("asset_update_issuer_operation_fee_parameters", {
   fee: uint64
 });
+export var htlc_create_operation_fee_parameters = new Serializer("htlc_create_operation_fee_parameters", {
+  fee: uint64,
+  fee_per_day: uint64
+});
+export var htlc_redeem_operation_fee_parameters = new Serializer("htlc_redeem_operation_fee_parameters", {
+  fee: uint64,
+  fee_per_kb: uint64
+});
+export var htlc_redeemed_operation_fee_parameters = new Serializer("htlc_redeemed_operation_fee_parameters", {});
+export var htlc_extend_operation_fee_parameters = new Serializer("htlc_extend_operation_fee_parameters", {
+  fee: uint64,
+  fee_per_day: uint64
+});
+export var htlc_refund_operation_fee_parameters = new Serializer("htlc_refund_operation_fee_parameters", {});
 export var custom_authority_create_operation_fee_parameters = new Serializer("custom_authority_create_operation_fee_parameters", {
   basic_fee: uint64,
   price_per_byte: uint32
@@ -207,92 +235,55 @@ export var ticket_create_operation_fee_parameters = new Serializer("ticket_creat
 export var ticket_update_operation_fee_parameters = new Serializer("ticket_update_operation_fee_parameters", {
   fee: uint64
 });
-export var personal_data_create_operation_fee_parameters = new Serializer("personal_data_create_operation_fee_parameters", {
+export var liquidity_pool_create_operation_fee_parameters = new Serializer("liquidity_pool_create_operation_fee_parameters", {
+  fee: uint64
+});
+export var liquidity_pool_delete_operation_fee_parameters = new Serializer("liquidity_pool_delete_operation_fee_parameters", {
+  fee: uint64
+});
+export var liquidity_pool_deposit_operation_fee_parameters = new Serializer("liquidity_pool_deposit_operation_fee_parameters", {
+  fee: uint64
+});
+export var liquidity_pool_withdraw_operation_fee_parameters = new Serializer("liquidity_pool_withdraw_operation_fee_parameters", {
+  fee: uint64
+});
+export var liquidity_pool_exchange_operation_fee_parameters = new Serializer("liquidity_pool_exchange_operation_fee_parameters", {
+  fee: uint64
+});
+export var samet_fund_create_operation_fee_parameters = new Serializer("samet_fund_create_operation_fee_parameters", {
+  fee: uint64
+});
+export var samet_fund_delete_operation_fee_parameters = new Serializer("samet_fund_delete_operation_fee_parameters", {
+  fee: uint64
+});
+export var samet_fund_update_operation_fee_parameters = new Serializer("samet_fund_update_operation_fee_parameters", {
+  fee: uint64
+});
+export var samet_fund_borrow_operation_fee_parameters = new Serializer("samet_fund_borrow_operation_fee_parameters", {
+  fee: uint64
+});
+export var samet_fund_repay_operation_fee_parameters = new Serializer("samet_fund_repay_operation_fee_parameters", {
+  fee: uint64
+});
+export var credit_offer_create_operation_fee_parameters = new Serializer("credit_offer_create_operation_fee_parameters", {
   fee: uint64,
   price_per_kbyte: uint32
 });
-export var personal_data_remove_operation_fee_parameters = new Serializer("personal_data_remove_operation_fee_parameters", {
+export var credit_offer_delete_operation_fee_parameters = new Serializer("credit_offer_delete_operation_fee_parameters", {
   fee: uint64
 });
-export var content_card_create_operation_fee_parameters = new Serializer("content_card_create_operation_fee_parameters", {
+export var credit_offer_update_operation_fee_parameters = new Serializer("credit_offer_update_operation_fee_parameters", {
   fee: uint64,
   price_per_kbyte: uint32
 });
-export var content_card_update_operation_fee_parameters = new Serializer("content_card_update_operation_fee_parameters", {
-  fee: uint64,
-  price_per_kbyte: uint32
-});
-export var content_card_remove_operation_fee_parameters = new Serializer("content_card_remove_operation_fee_parameters", {
+export var credit_offer_accept_operation_fee_parameters = new Serializer("credit_offer_accept_operation_fee_parameters", {
   fee: uint64
 });
-export var permission_create_operation_fee_parameters = new Serializer("permission_create_operation_fee_parameters", {
-  fee: int64
-});
-export var permission_remove_operation_fee_parameters = new Serializer("permission_remove_operation_fee_parameters", {
+export var credit_deal_repay_operation_fee_parameters = new Serializer("credit_deal_repay_operation_fee_parameters", {
   fee: uint64
 });
-export var content_vote_create_operation_fee_parameters = new Serializer("content_vote_create_operation_fee_parameters", {
-  fee: int64
-});
-export var content_vote_remove_operation_fee_parameters = new Serializer("content_vote_remove_operation_fee_parameters", {
-  fee: uint64
-});
-export var vote_counter_update_operation_fee_parameters = new Serializer("vote_counter_update_operation_fee_parameters", {
-  fee: int64
-});
-export var commit_create_operation_fee_parameters = new Serializer("commit_create_operation_fee_parameters");
-export var reveal_create_operation_fee_parameters = new Serializer("reveal_create_operation_fee_parameters");
-export var commit_create_v2_operation_fee_parameters = new Serializer("commit_create_v2_operation_fee_parameters");
-export var reveal_create_v2_operation_fee_parameters = new Serializer("reveal_create_v2_operation_fee_parameters");
-export var commit_create_v3_operation_fee_parameters = new Serializer("commit_create_v3_operation_fee_parameters");
-export var reveal_create_v3_operation_fee_parameters = new Serializer("reveal_create_v3_operation_fee_parameters");
-export var content_card_v2_create_operation_fee_parameters = new Serializer("content_card_v2_create_operation_fee_parameters", {
-  fee: uint64,
-  price_per_kbyte: uint32
-});
-export var content_card_v2_update_operation_fee_parameters = new Serializer("content_card_v2_update_operation_fee_parameters", {
-  fee: uint64,
-  price_per_kbyte: uint32
-});
-export var content_card_v2_remove_operation_fee_parameters = new Serializer("content_card_v2_remove_operation_fee_parameters", {
-  fee: uint64
-});
-export var personal_data_v2_create_operation_fee_parameters = new Serializer("personal_data_v2_create_operation_fee_parameters", {
-  fee: uint64,
-  price_per_kbyte: uint32
-});
-export var personal_data_v2_remove_operation_fee_parameters = new Serializer("personal_data_v2_remove_operation_fee_parameters", {
-  fee: uint64
-});
-export var worker_create_operation_fee_parameters = new Serializer("worker_create_operation_fee_parameters", {
-  fee: uint64
-});
-export var htlc_create_operation_fee_parameters = new Serializer("htlc_create_operation_fee_parameters", {
-  fee: uint64,
-  fee_per_day: uint64
-});
-export var htlc_redeem_operation_fee_parameters = new Serializer("htlc_redeem_operation_fee_parameters", {
-  fee: uint64,
-  fee_per_kb: uint64
-});
-export var htlc_redeemed_operation_fee_parameters = new Serializer("htlc_redeemed_operation_fee_parameters");
-export var htlc_extend_operation_fee_parameters = new Serializer("htlc_extend_operation_fee_parameters", {
-  fee: uint64,
-  fee_per_day: uint64
-});
-export var htlc_refund_operation_fee_parameters = new Serializer("htlc_refund_operation_fee_parameters");
-export var limit_order_create_operation_fee_parameters = new Serializer("limit_order_create_operation_fee_parameters", {
-  fee: uint64
-});
-export var limit_order_cancel_operation_fee_parameters = new Serializer("limit_order_cancel_operation_fee_parameters", {
-  fee: uint64
-});
-export var call_order_update_operation_fee_parameters = new Serializer("call_order_update_operation_fee_parameters", {
-  fee: uint64
-});
-export var fill_order_operation_fee_parameters = new Serializer("fill_order_operation_fee_parameters");
-export var ico_balance_claim_operation_fee_parameters = new Serializer("ico_balance_claim_operation_fee_parameters");
-var fee_parameters = static_variant([transfer_operation_fee_parameters, account_create_operation_fee_parameters, account_update_operation_fee_parameters, account_whitelist_operation_fee_parameters, account_upgrade_operation_fee_parameters, account_transfer_operation_fee_parameters, asset_create_operation_fee_parameters, asset_update_operation_fee_parameters, asset_update_bitasset_operation_fee_parameters, asset_update_feed_producers_operation_fee_parameters, asset_issue_operation_fee_parameters, asset_reserve_operation_fee_parameters, asset_fund_fee_pool_operation_fee_parameters, asset_settle_operation_fee_parameters, asset_global_settle_operation_fee_parameters, asset_publish_feed_operation_fee_parameters, witness_create_operation_fee_parameters, witness_update_operation_fee_parameters, proposal_create_operation_fee_parameters, proposal_update_operation_fee_parameters, proposal_delete_operation_fee_parameters, withdraw_permission_create_operation_fee_parameters, withdraw_permission_update_operation_fee_parameters, withdraw_permission_claim_operation_fee_parameters, withdraw_permission_delete_operation_fee_parameters, committee_member_create_operation_fee_parameters, committee_member_update_operation_fee_parameters, committee_member_update_global_parameters_operation_fee_parameters, vesting_balance_create_operation_fee_parameters, vesting_balance_withdraw_operation_fee_parameters, custom_operation_fee_parameters, assert_operation_fee_parameters, balance_claim_operation_fee_parameters, override_transfer_operation_fee_parameters, asset_settle_cancel_operation_fee_parameters, asset_claim_fees_operation_fee_parameters, fba_distribute_operation_fee_parameters, asset_claim_pool_operation_fee_parameters, asset_update_issuer_operation_fee_parameters, personal_data_create_operation_fee_parameters, personal_data_remove_operation_fee_parameters, content_card_create_operation_fee_parameters, content_card_update_operation_fee_parameters, content_card_remove_operation_fee_parameters, permission_create_operation_fee_parameters, permission_remove_operation_fee_parameters, commit_create_operation_fee_parameters, reveal_create_operation_fee_parameters, worker_create_operation_fee_parameters, htlc_create_operation_fee_parameters, htlc_redeem_operation_fee_parameters, htlc_redeemed_operation_fee_parameters, htlc_extend_operation_fee_parameters, htlc_refund_operation_fee_parameters, limit_order_create_operation_fee_parameters, limit_order_cancel_operation_fee_parameters, call_order_update_operation_fee_parameters, fill_order_operation_fee_parameters, custom_authority_create_operation_fee_parameters, custom_authority_update_operation_fee_parameters, custom_authority_delete_operation_fee_parameters, ticket_create_operation_fee_parameters, ticket_update_operation_fee_parameters, ico_balance_claim_operation_fee_parameters]);
+export var credit_deal_expired_operation_fee_parameters = new Serializer("credit_deal_expired_operation_fee_parameters", {});
+var fee_parameters = static_variant([transfer_operation_fee_parameters, limit_order_create_operation_fee_parameters, limit_order_cancel_operation_fee_parameters, call_order_update_operation_fee_parameters, fill_order_operation_fee_parameters, account_create_operation_fee_parameters, account_update_operation_fee_parameters, account_whitelist_operation_fee_parameters, account_upgrade_operation_fee_parameters, account_transfer_operation_fee_parameters, asset_create_operation_fee_parameters, asset_update_operation_fee_parameters, asset_update_bitasset_operation_fee_parameters, asset_update_feed_producers_operation_fee_parameters, asset_issue_operation_fee_parameters, asset_reserve_operation_fee_parameters, asset_fund_fee_pool_operation_fee_parameters, asset_settle_operation_fee_parameters, asset_global_settle_operation_fee_parameters, asset_publish_feed_operation_fee_parameters, witness_create_operation_fee_parameters, witness_update_operation_fee_parameters, proposal_create_operation_fee_parameters, proposal_update_operation_fee_parameters, proposal_delete_operation_fee_parameters, withdraw_permission_create_operation_fee_parameters, withdraw_permission_update_operation_fee_parameters, withdraw_permission_claim_operation_fee_parameters, withdraw_permission_delete_operation_fee_parameters, committee_member_create_operation_fee_parameters, committee_member_update_operation_fee_parameters, committee_member_update_global_parameters_operation_fee_parameters, vesting_balance_create_operation_fee_parameters, vesting_balance_withdraw_operation_fee_parameters, worker_create_operation_fee_parameters, custom_operation_fee_parameters, assert_operation_fee_parameters, balance_claim_operation_fee_parameters, override_transfer_operation_fee_parameters, transfer_to_blind_operation_fee_parameters, blind_transfer_operation_fee_parameters, transfer_from_blind_operation_fee_parameters, asset_settle_cancel_operation_fee_parameters, asset_claim_fees_operation_fee_parameters, fba_distribute_operation_fee_parameters, bid_collateral_operation_fee_parameters, execute_bid_operation_fee_parameters, asset_claim_pool_operation_fee_parameters, asset_update_issuer_operation_fee_parameters, htlc_create_operation_fee_parameters, htlc_redeem_operation_fee_parameters, htlc_redeemed_operation_fee_parameters, htlc_extend_operation_fee_parameters, htlc_refund_operation_fee_parameters, custom_authority_create_operation_fee_parameters, custom_authority_update_operation_fee_parameters, custom_authority_delete_operation_fee_parameters, ticket_create_operation_fee_parameters, ticket_update_operation_fee_parameters, liquidity_pool_create_operation_fee_parameters, liquidity_pool_delete_operation_fee_parameters, liquidity_pool_deposit_operation_fee_parameters, liquidity_pool_withdraw_operation_fee_parameters, liquidity_pool_exchange_operation_fee_parameters, samet_fund_create_operation_fee_parameters, samet_fund_delete_operation_fee_parameters, samet_fund_update_operation_fee_parameters, samet_fund_borrow_operation_fee_parameters, samet_fund_repay_operation_fee_parameters, credit_offer_create_operation_fee_parameters, credit_offer_delete_operation_fee_parameters, credit_offer_update_operation_fee_parameters, credit_offer_accept_operation_fee_parameters, credit_deal_repay_operation_fee_parameters, credit_deal_expired_operation_fee_parameters]);
 export var fee_schedule = new Serializer("fee_schedule", {
   parameters: set(fee_parameters),
   scale: uint32
@@ -302,17 +293,7 @@ export var asset = new Serializer("asset", {
   amount: int64,
   asset_id: protocol_id_type("asset")
 });
-export var generic_operation_result = new Serializer("generic_operation_result", {
-  new_objects: set(object_id_type),
-  updated_objects: set(object_id_type),
-  removed_objects: set(object_id_type)
-});
-export var generic_exchange_operation_result = new Serializer("generic_exchange_operation_result", {
-  paid: array(asset),
-  received: array(asset),
-  fees: array(asset)
-});
-var operation_result = static_variant([void_result, object_id_type, asset, generic_operation_result, generic_exchange_operation_result]);
+var operation_result = static_variant([void_result, object_id_type, asset]);
 export var processed_transaction = new Serializer("processed_transaction", {
   ref_block_num: uint16,
   ref_block_prefix: uint32,
@@ -359,6 +340,38 @@ export var transfer = new Serializer("transfer", {
   amount: asset,
   memo: optional(memo_data),
   extensions: set(future_extensions)
+});
+export var limit_order_create = new Serializer("limit_order_create", {
+  fee: asset,
+  seller: protocol_id_type("account"),
+  amount_to_sell: asset,
+  min_to_receive: asset,
+  expiration: time_point_sec,
+  fill_or_kill: bool,
+  extensions: set(future_extensions)
+});
+export var limit_order_cancel = new Serializer("limit_order_cancel", {
+  fee: asset,
+  fee_paying_account: protocol_id_type("account"),
+  order: protocol_id_type("limit_order"),
+  extensions: set(future_extensions)
+});
+export var call_order_update = new Serializer("call_order_update", {
+  fee: asset,
+  funding_account: protocol_id_type("account"),
+  delta_collateral: asset,
+  delta_debt: asset,
+  extensions: extension([{
+    name: "target_collateral_ratio",
+    type: uint16
+  }])
+});
+export var fill_order = new Serializer("fill_order", {
+  fee: asset,
+  order_id: object_id_type,
+  account_id: protocol_id_type("account"),
+  pays: asset,
+  receives: asset
 });
 export var authority = new Serializer("authority", {
   weight_threshold: uint32,
@@ -661,8 +674,6 @@ export var chain_parameters = new Serializer("chain_parameters", {
   accounts_per_fee_scale: uint16,
   account_fee_scale_bitshifts: uint8,
   max_authority_depth: uint8,
-  rsquared_witnesses_top_max: uint8,
-  rsquared_witnesses_active_max: uint8,
   extensions: set(future_extensions)
 });
 export var committee_member_update_global_parameters = new Serializer("committee_member_update_global_parameters", {
@@ -678,7 +689,6 @@ export var cdd_vesting_policy_initializer = new Serializer("cdd_vesting_policy_i
   start_claim: time_point_sec,
   vesting_seconds: uint32
 });
-export var instant_vesting_policy_initializer = new Serializer("instant_vesting_policy_initializer", {});
 var vesting_policy_initializer = static_variant([linear_vesting_policy_initializer, cdd_vesting_policy_initializer]);
 export var vesting_balance_create = new Serializer("vesting_balance_create", {
   fee: asset,
@@ -692,6 +702,22 @@ export var vesting_balance_withdraw = new Serializer("vesting_balance_withdraw",
   vesting_balance: protocol_id_type("vesting_balance"),
   owner: protocol_id_type("account"),
   amount: asset
+});
+export var refund_worker_initializer = new Serializer("refund_worker_initializer");
+export var vesting_balance_worker_initializer = new Serializer("vesting_balance_worker_initializer", {
+  pay_vesting_period_days: uint16
+});
+export var burn_worker_initializer = new Serializer("burn_worker_initializer");
+var worker_initializer = static_variant([refund_worker_initializer, vesting_balance_worker_initializer, burn_worker_initializer]);
+export var worker_create = new Serializer("worker_create", {
+  fee: asset,
+  owner: protocol_id_type("account"),
+  work_begin_date: time_point_sec,
+  work_end_date: time_point_sec,
+  daily_pay: int64,
+  name: string,
+  url: string,
+  initializer: worker_initializer
 });
 export var custom = new Serializer("custom", {
   fee: asset,
@@ -788,6 +814,19 @@ export var fba_distribute = new Serializer("fba_distribute", {
   fba_id: protocol_id_type("fba_accumulator"),
   amount: int64
 });
+export var bid_collateral = new Serializer("bid_collateral", {
+  fee: asset,
+  bidder: protocol_id_type("account"),
+  additional_collateral: asset,
+  debt_covered: asset,
+  extensions: set(future_extensions)
+});
+export var execute_bid = new Serializer("execute_bid", {
+  fee: asset,
+  bidder: protocol_id_type("account"),
+  debt: asset,
+  collateral: asset
+});
 export var asset_claim_pool = new Serializer("asset_claim_pool", {
   fee: asset,
   issuer: protocol_id_type("account"),
@@ -802,11 +841,46 @@ export var asset_update_issuer = new Serializer("asset_update_issuer", {
   new_issuer: protocol_id_type("account"),
   extensions: set(future_extensions)
 });
+export var htlc_create = new Serializer("htlc_create", {
+  fee: asset,
+  from: protocol_id_type("account"),
+  to: protocol_id_type("account"),
+  amount: asset,
+  preimage_hash: static_variant([bytes(20), bytes(20), bytes(32)]),
+  preimage_size: uint16,
+  claim_period_seconds: uint32,
+  extensions: set(future_extensions)
+});
+export var htlc_redeem = new Serializer("htlc_redeem", {
+  fee: asset,
+  htlc_id: protocol_id_type("htlc"),
+  redeemer: protocol_id_type("account"),
+  preimage: bytes(),
+  extensions: set(future_extensions)
+});
+export var htlc_redeemed = new Serializer("htlc_redeemed", {
+  fee: asset,
+  htlc_id: protocol_id_type("htlc"),
+  from: protocol_id_type("account"),
+  to: protocol_id_type("account"),
+  amount: asset
+});
+export var htlc_extend = new Serializer("htlc_extend", {
+  fee: asset,
+  htlc_id: protocol_id_type("htlc"),
+  update_issuer: protocol_id_type("account"),
+  seconds_to_add: uint32,
+  extensions: set(future_extensions)
+});
+export var htlc_refund = new Serializer("htlc_refund", {
+  fee: asset,
+  htlc_id: protocol_id_type("htlc"),
+  to: protocol_id_type("account")
+});
 export var restriction = new Serializer("restriction", {
   member_index: varuint64,
   restriction_type: varuint64,
-  argument: static_variant([void_result, bool, int64, string, time_point_sec, public_key, bytes(32), protocol_id_type("account"), protocol_id_type("asset"), protocol_id_type("force_settlement"), protocol_id_type("committee_member"), protocol_id_type("witness"), protocol_id_type("limit_order"), protocol_id_type("call_order"), protocol_id_type("object"), protocol_id_type("proposal"), protocol_id_type("withdraw_permission"), protocol_id_type("vesting_balance"), protocol_id_type("worker"), protocol_id_type("balance"), set(bool), set(int64), set(string), set(time_point_sec), set(public_key), set(bytes(32)), set(protocol_id_type("account")), set(protocol_id_type("asset")), set(protocol_id_type("force_settlement")), set(protocol_id_type("committee_member")), set(protocol_id_type("witness")), set(protocol_id_type("limit_order")), set(protocol_id_type("call_order")), set(protocol_id_type("object")), set(protocol_id_type("proposal")), set(protocol_id_type("withdraw_permission")), set(protocol_id_type("vesting_balance")), set(protocol_id_type("worker")), set(protocol_id_type("balance")), array(restriction), array(array(restriction))
-  // fixme: pair<int64_t,std_vector<graphene::protocol::restriction>>
+  argument: static_variant([void_result, bool, int64, string, time_point_sec, public_key, bytes(32), protocol_id_type("account"), protocol_id_type("asset"), protocol_id_type("force_settlement"), protocol_id_type("committee_member"), protocol_id_type("witness"), protocol_id_type("limit_order"), protocol_id_type("call_order"), protocol_id_type("object"), protocol_id_type("proposal"), protocol_id_type("withdraw_permission"), protocol_id_type("vesting_balance"), protocol_id_type("worker"), protocol_id_type("balance"), set(bool), set(int64), set(string), set(time_point_sec), set(public_key), set(bytes(32)), set(protocol_id_type("account")), set(protocol_id_type("asset")), set(protocol_id_type("force_settlement")), set(protocol_id_type("committee_member")), set(protocol_id_type("witness")), set(protocol_id_type("limit_order")), set(protocol_id_type("call_order")), set(protocol_id_type("object")), set(protocol_id_type("proposal")), set(protocol_id_type("withdraw_permission")), set(protocol_id_type("vesting_balance")), set(protocol_id_type("worker")), set(protocol_id_type("balance")), array(restriction), array(array(restriction)) // fixme: pair<int64_t,std_vector<graphene::protocol::restriction>>
   ]),
   extensions: set(future_extensions)
 });
@@ -854,244 +928,145 @@ export var ticket_update = new Serializer("ticket_update", {
   amount_for_new_target: optional(asset),
   extensions: set(future_extensions)
 });
-export var personal_data_create = new Serializer("personal_data_create", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  operator_account: protocol_id_type("account"),
-  url: string,
-  hash: string
-});
-export var personal_data_remove = new Serializer("personal_data_remove", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  operator_account: protocol_id_type("account"),
-  hash: string
-});
-export var content_card_create = new Serializer("content_card_create", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  hash: string,
-  url: string,
-  type: string,
-  description: string,
-  content_key: string
-});
-export var content_card_update = new Serializer("content_card_update", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  hash: string,
-  url: string,
-  type: string,
-  description: string,
-  content_key: string
-});
-export var content_card_remove = new Serializer("content_card_remove", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  content_id: protocol_id_type("object")
-});
-export var permission_create = new Serializer("permission_create", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  operator_account: protocol_id_type("account"),
-  permission_type: string,
-  object_id: optional(object_id_type),
-  content_key: string
-});
-export var permission_remove = new Serializer("permission_remove", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  permission_id: protocol_id_type("object")
-});
-export var content_vote_create = new Serializer("content_vote_create", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  content_id: string,
-  master_account: protocol_id_type("account"),
-  master_content_id: string
-});
-export var content_vote_remove = new Serializer("content_vote_remove", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  vote_id: protocol_id_type("object")
-});
-export var vote_counter_update = new Serializer("vote_counter_update", {
-  fee: asset,
-  master_account: protocol_id_type("account"),
-  vote_data: map(protocol_id_type("object"), uint32)
-});
-export var commit_create = new Serializer("commit_create", {
+export var liquidity_pool_create = new Serializer("liquidity_pool_create", {
   fee: asset,
   account: protocol_id_type("account"),
-  hash: string
-});
-export var reveal_create = new Serializer("reveal_create", {
-  fee: asset,
-  account: protocol_id_type("account"),
-  value: uint64
-});
-export var commit_create_v2 = new Serializer("commit_create_v2", {
-  fee: asset,
-  account: protocol_id_type("account"),
-  hash: string,
-  maintenance_time: uint32
-});
-export var reveal_create_v2 = new Serializer("reveal_create_v2", {
-  fee: asset,
-  account: protocol_id_type("account"),
-  value: uint64,
-  maintenance_time: uint32
-});
-export var commit_create_v3 = new Serializer("commit_create_v3", {
-  fee: asset,
-  account: protocol_id_type("account"),
-  hash: string,
-  maintenance_time: uint32,
-  witness_key: public_key
-});
-export var reveal_create_v3 = new Serializer("reveal_create_v3", {
-  fee: asset,
-  account: protocol_id_type("account"),
-  value: uint64,
-  maintenance_time: uint32,
-  witness_key: public_key
-});
-export var content_card_v2_create = new Serializer("content_card_v2_create", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  hash: string,
-  url: string,
-  type: string,
-  description: string,
-  content_key: string,
-  storage_data: string
-});
-export var content_card_v2_update = new Serializer("content_card_v2_update", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  hash: string,
-  url: string,
-  type: string,
-  description: string,
-  content_key: string,
-  storage_data: string
-});
-export var content_card_v2_remove = new Serializer("content_card_v2_remove", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  content_id: protocol_id_type("object")
-});
-export var personal_data_v2_create = new Serializer("personal_data_v2_create", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  operator_account: protocol_id_type("account"),
-  url: string,
-  hash: string,
-  storage_data: string
-});
-export var personal_data_v2_remove = new Serializer("personal_data_v2_remove", {
-  fee: asset,
-  subject_account: protocol_id_type("account"),
-  operator_account: protocol_id_type("account"),
-  hash: string
-});
-export var refund_worker_initializer = new Serializer("refund_worker_initializer", {});
-export var vesting_balance_worker_initializer = new Serializer("vesting_balance_worker_initializer", {
-  pay_vesting_period_days: uint16
-});
-export var burn_worker_initializer = new Serializer("burn_worker_initializer", {});
-var worker_initializer = static_variant([refund_worker_initializer, vesting_balance_worker_initializer, burn_worker_initializer]);
-export var worker_create = new Serializer("worker_create", {
-  fee: asset,
-  owner: protocol_id_type("account"),
-  work_begin_date: time_point_sec,
-  work_end_date: time_point_sec,
-  daily_pay: int64,
-  name: string,
-  url: string,
-  initializer: worker_initializer
-});
-export var htlc_create = new Serializer("htlc_create", {
-  fee: asset,
-  from: protocol_id_type("account"),
-  to: protocol_id_type("account"),
-  amount: asset,
-  preimage_hash: static_variant([bytes(20), bytes(20), bytes(32)]),
-  preimage_size: uint16,
-  claim_period_seconds: uint32,
-  extensions: extension([{
-    name: "memo",
-    type: memo_data
-  }])
-});
-export var htlc_redeem = new Serializer("htlc_redeem", {
-  fee: asset,
-  htlc_id: protocol_id_type("htlc"),
-  redeemer: protocol_id_type("account"),
-  preimage: bytes(),
+  asset_a: protocol_id_type("asset"),
+  asset_b: protocol_id_type("asset"),
+  share_asset: protocol_id_type("asset"),
+  taker_fee_percent: uint16,
+  withdrawal_fee_percent: uint16,
   extensions: set(future_extensions)
 });
-export var htlc_redeemed = new Serializer("htlc_redeemed", {
+export var liquidity_pool_delete = new Serializer("liquidity_pool_delete", {
   fee: asset,
-  htlc_id: protocol_id_type("htlc"),
-  from: protocol_id_type("account"),
-  to: protocol_id_type("account"),
-  amount: asset
-});
-export var htlc_extend = new Serializer("htlc_extend", {
-  fee: asset,
-  htlc_id: protocol_id_type("htlc"),
-  update_issuer: protocol_id_type("account"),
-  seconds_to_add: uint32,
+  account: protocol_id_type("account"),
+  pool: protocol_id_type("liquidity_pool"),
   extensions: set(future_extensions)
 });
-export var htlc_refund = new Serializer("htlc_refund", {
+export var liquidity_pool_deposit = new Serializer("liquidity_pool_deposit", {
   fee: asset,
-  htlc_id: protocol_id_type("htlc"),
-  to: protocol_id_type("account")
+  account: protocol_id_type("account"),
+  pool: protocol_id_type("liquidity_pool"),
+  amount_a: asset,
+  amount_b: asset,
+  extensions: set(future_extensions)
 });
-export var limit_order_create = new Serializer("limit_order_create", {
+export var liquidity_pool_withdraw = new Serializer("liquidity_pool_withdraw", {
   fee: asset,
-  seller: protocol_id_type("account"),
+  account: protocol_id_type("account"),
+  pool: protocol_id_type("liquidity_pool"),
+  share_amount: asset,
+  extensions: set(future_extensions)
+});
+export var liquidity_pool_exchange = new Serializer("liquidity_pool_exchange", {
+  fee: asset,
+  account: protocol_id_type("account"),
+  pool: protocol_id_type("liquidity_pool"),
   amount_to_sell: asset,
   min_to_receive: asset,
-  expiration: time_point_sec,
-  fill_or_kill: bool,
   extensions: set(future_extensions)
 });
-export var limit_order_cancel = new Serializer("limit_order_cancel", {
+export var samet_fund_create = new Serializer("samet_fund_create", {
   fee: asset,
-  fee_paying_account: protocol_id_type("account"),
-  order: protocol_id_type("limit_order"),
+  owner_account: protocol_id_type("account"),
+  asset_type: protocol_id_type("asset"),
+  balance: int64,
+  fee_rate: uint32,
   extensions: set(future_extensions)
 });
-export var call_order_update = new Serializer("call_order_update", {
+export var samet_fund_delete = new Serializer("samet_fund_delete", {
   fee: asset,
-  funding_account: protocol_id_type("account"),
-  delta_collateral: asset,
-  delta_debt: asset,
-  extensions: extension([{
-    name: "target_collateral_ratio",
-    type: uint16
-  }])
+  owner_account: protocol_id_type("account"),
+  fund_id: protocol_id_type("samet_fund"),
+  extensions: set(future_extensions)
 });
-export var fill_order = new Serializer("fill_order", {
+export var samet_fund_update = new Serializer("samet_fund_update", {
   fee: asset,
-  order_id: object_id_type,
-  account_id: protocol_id_type("account"),
-  pays: asset,
-  receives: asset,
-  fill_price: price,
-  is_maker: bool
+  owner_account: protocol_id_type("account"),
+  fund_id: protocol_id_type("samet_fund"),
+  delta_amount: optional(asset),
+  new_fee_rate: optional(uint32),
+  extensions: set(future_extensions)
 });
-export var ico_balance_claim = new Serializer("ico_balance_claim", {
+export var samet_fund_borrow = new Serializer("samet_fund_borrow", {
   fee: asset,
-  deposit_to_account: protocol_id_type("account"),
-  balance_to_claim: protocol_id_type("ico_balance"),
-  eth_pub_key: string,
-  eth_sign: string
+  borrower: protocol_id_type("account"),
+  fund_id: protocol_id_type("samet_fund"),
+  borrow_amount: asset,
+  extensions: set(future_extensions)
 });
-operation.st_operations = [transfer, account_create, account_update, account_whitelist, account_upgrade, account_transfer, asset_create, asset_update, asset_update_bitasset, asset_update_feed_producers, asset_issue, asset_reserve, asset_fund_fee_pool, asset_settle, asset_global_settle, asset_publish_feed, witness_create, witness_update, proposal_create, proposal_update, proposal_delete, withdraw_permission_create, withdraw_permission_update, withdraw_permission_claim, withdraw_permission_delete, committee_member_create, committee_member_update, committee_member_update_global_parameters, vesting_balance_create, vesting_balance_withdraw, custom, assert, balance_claim, override_transfer, asset_settle_cancel, asset_claim_fees, fba_distribute, asset_claim_pool, asset_update_issuer, personal_data_create, personal_data_remove, content_card_create, content_card_update, content_card_remove, permission_create, permission_remove, commit_create, reveal_create, worker_create, htlc_create, htlc_redeem, htlc_redeemed, htlc_extend, htlc_refund, limit_order_create, limit_order_cancel, call_order_update, fill_order, custom_authority_create, custom_authority_update, custom_authority_delete, ticket_create, ticket_update, ico_balance_claim];
+export var samet_fund_repay = new Serializer("samet_fund_repay", {
+  fee: asset,
+  account: protocol_id_type("account"),
+  fund_id: protocol_id_type("samet_fund"),
+  repay_amount: asset,
+  fund_fee: asset,
+  extensions: set(future_extensions)
+});
+export var credit_offer_create = new Serializer("credit_offer_create", {
+  fee: asset,
+  owner_account: protocol_id_type("account"),
+  asset_type: protocol_id_type("asset"),
+  balance: int64,
+  fee_rate: uint32,
+  max_duration_seconds: uint32,
+  min_deal_amount: int64,
+  enabled: bool,
+  auto_disable_time: time_point_sec,
+  acceptable_collateral: map(protocol_id_type("asset"), price),
+  acceptable_borrowers: map(protocol_id_type("account"), int64),
+  extensions: set(future_extensions)
+});
+export var credit_offer_delete = new Serializer("credit_offer_delete", {
+  fee: asset,
+  owner_account: protocol_id_type("account"),
+  offer_id: protocol_id_type("credit_offer"),
+  extensions: set(future_extensions)
+});
+export var credit_offer_update = new Serializer("credit_offer_update", {
+  fee: asset,
+  owner_account: protocol_id_type("account"),
+  offer_id: protocol_id_type("credit_offer"),
+  delta_amount: optional(asset),
+  fee_rate: optional(uint32),
+  max_duration_seconds: optional(uint32),
+  min_deal_amount: optional(int64),
+  enabled: optional(bool),
+  auto_disable_time: optional(time_point_sec),
+  acceptable_collateral: optional(map(protocol_id_type("asset"), price)),
+  acceptable_borrowers: optional(map(protocol_id_type("account"), int64)),
+  extensions: set(future_extensions)
+});
+export var credit_offer_accept = new Serializer("credit_offer_accept", {
+  fee: asset,
+  borrower: protocol_id_type("account"),
+  offer_id: protocol_id_type("credit_offer"),
+  borrow_amount: asset,
+  collateral: asset,
+  max_fee_rate: uint32,
+  min_duration_seconds: uint32,
+  extensions: set(future_extensions)
+});
+export var credit_deal_repay = new Serializer("credit_deal_repay", {
+  fee: asset,
+  account: protocol_id_type("account"),
+  deal_id: protocol_id_type("credit_deal"),
+  repay_amount: asset,
+  credit_fee: asset,
+  extensions: set(future_extensions)
+});
+export var credit_deal_expired = new Serializer("credit_deal_expired", {
+  fee: asset,
+  deal_id: protocol_id_type("credit_deal"),
+  offer_id: protocol_id_type("credit_offer"),
+  offer_owner: protocol_id_type("account"),
+  borrower: protocol_id_type("account"),
+  unpaid_amount: asset,
+  collateral: asset,
+  fee_rate: uint32
+});
+operation.st_operations = [transfer, limit_order_create, limit_order_cancel, call_order_update, fill_order, account_create, account_update, account_whitelist, account_upgrade, account_transfer, asset_create, asset_update, asset_update_bitasset, asset_update_feed_producers, asset_issue, asset_reserve, asset_fund_fee_pool, asset_settle, asset_global_settle, asset_publish_feed, witness_create, witness_update, proposal_create, proposal_update, proposal_delete, withdraw_permission_create, withdraw_permission_update, withdraw_permission_claim, withdraw_permission_delete, committee_member_create, committee_member_update, committee_member_update_global_parameters, vesting_balance_create, vesting_balance_withdraw, worker_create, custom, assert, balance_claim, override_transfer, transfer_to_blind, blind_transfer, transfer_from_blind, asset_settle_cancel, asset_claim_fees, fba_distribute, bid_collateral, execute_bid, asset_claim_pool, asset_update_issuer, htlc_create, htlc_redeem, htlc_redeemed, htlc_extend, htlc_refund, custom_authority_create, custom_authority_update, custom_authority_delete, ticket_create, ticket_update, liquidity_pool_create, liquidity_pool_delete, liquidity_pool_deposit, liquidity_pool_withdraw, liquidity_pool_exchange, samet_fund_create, samet_fund_delete, samet_fund_update, samet_fund_borrow, samet_fund_repay, credit_offer_create, credit_offer_delete, credit_offer_update, credit_offer_accept, credit_deal_repay, credit_deal_expired];
 export var transaction = new Serializer("transaction", {
   ref_block_num: uint16,
   ref_block_prefix: uint32,
@@ -1106,16 +1081,9 @@ export var signed_transaction = new Serializer("signed_transaction", {
   operations: array(operation),
   extensions: set(future_extensions),
   signatures: array(bytes(65))
-});
-export var graphene_custom_operations_account_storage_map = new Serializer("graphene_custom_operations_account_storage_map", {
-  remove: bool,
-  catalog: string,
-  key_values: map(string, optional(string))
-});
-//# -------------------------------
+}); //# -------------------------------
 //#  Generated code end
 //# -------------------------------
-
 // Custom Types
 
 export var stealth_memo_data = new Serializer("stealth_memo_data", {
@@ -1124,8 +1092,7 @@ export var stealth_memo_data = new Serializer("stealth_memo_data", {
   blinding_factor: bytes(32),
   commitment: bytes(33),
   check: uint32
-});
-// var stealth_confirmation = new Serializer(
+}); // var stealth_confirmation = new Serializer(
 //     "stealth_confirmation", {
 //     one_time_key: public_key,
 //     to: optional( public_key ),

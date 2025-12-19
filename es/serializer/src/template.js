@@ -3,18 +3,14 @@ export default function template(op) {
   var object = op.toObject(void 0, {
     use_default: true,
     annotate: true
-  });
+  }); // visual (with descriptions)
 
-  // visual (with descriptions)
-  console.error(JSON.stringify(object, null, 4));
-
-  // usable in a copy-paste
+  console.error(JSON.stringify(object, null, 4)); // usable in a copy-paste
 
   object = op.toObject(void 0, {
     use_default: true,
     annotate: false
-  });
+  }); // copy-paste one-lineer
 
-  // copy-paste one-lineer
   console.error(JSON.stringify(object));
 }

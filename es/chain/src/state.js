@@ -3,10 +3,12 @@ function get(state) {
     return state[key] || "";
   };
 }
+
 function set(state) {
   return function (key, value) {
     state[key] = value;
     return this;
   };
 }
+
 export { get, set };
